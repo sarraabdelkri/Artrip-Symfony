@@ -1,0 +1,102 @@
+{% extends'Header-Footer.html.twig' %}
+
+ {% block title %}
+     Events
+ {% endblock %}
+
+
+    {% block Content %}
+
+        <section class="d-flex align-items-center dark-overlay bg-cover" style="background-image: url('{{ asset('uploads/even/photo-1525610553991-2bede1a236e2.jpg') }}');">
+            <tbody id="search">
+
+            </tbody>
+            <tbody id="myTable">
+            <div>
+                <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
+                    <img src="https://img.icons8.com/nolan/344/google-web-search.png" style="width:50px;height:50px;"/></p>
+
+            </div>
+            <div class="container py-6 py-lg-7 text-white overlay-content text-center">
+
+                <div class="row">
+                    <div class="col-xl-10 mx-auto">
+                        <p class="text-lg text-shadow">Uncover the best events from all types and themes !</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-6">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-8">
+                        <p class="subtitle text-primary">The latest events</p>
+                        <h2>What's new on Artrip</h2>
+                    </div>
+
+                    <div class="text-center">
+                        <a class="btn btn-outline-primary btn-block" href="{{ path('addevenementfront') }}" >
+                            <i class="far fa-paper-plane mr-2"></i>
+                            Add a new event
+                        </a>
+                    </div>
+                </div>
+                <a href="{{ path('event_Today') }}"class=" btn btn-primary">today</a>
+                <a href="{{ path('event_HasPassed') }}"class=" btn btn-primary">Event Has Passed</a>
+                <a href="{{ path('main') }}"class=" btn btn-primary">Calander</a>
+                <a href="{{ path('event_ThisWeek') }}"class=" btn btn-primary">Event this week</a>
+
+                <div class="row">
+                    {% for evenement in evenements %}
+
+                        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="service-item">
+                                <div class="overflow-hidden" >
+                                    <img class="card-img-top" src="{{ asset('uploads/even/' ~ evenement.image) }}"  alt="Card image cap"></div>
+
+
+                                <h3 class="text-shadow text-uppercase mb-0">{{ evenement.lieu }}</h3>
+                                <!-- event top accessories -->
+                                <div class="card-body">
+                                    <!-- event bottom accessories -->
+                                    <div class="card-img-overlay-bottom ml-3 z-index-40 ">
+                                        <!-- event bottom accessories -->
+                                        <p class="card-text">{{ evenement.description }}</p>
+
+
+                                        <span> {{ evenement.date ? evenement.date|date('Y-m-d') : '' }} </span>
+
+                                        <!--<span> 17:00 </span>
+                                        <span> UTC+1 </span>-->
+
+
+                                    </div>
+                                    <a href="{{ path('reservationeven_new') }}" class="btn btn-primary">Go somewhere</a>
+
+                                    <a href="{{ path('post_like', {id: evenement.getId()}) }}" class="btn btn-link js-like">
+                                        {% if app.user and  evenement.isLikedByUser(app.user) %}
+                                            <i class="fas fa-thumbs-up"></i>
+                                        {% else %}
+                                            <i class="far fa-thumbs-up"></i>
+                                        {% endif%}
+                                        <span class="js-likes">{{ evenement.getLikes | length}}</span>
+                                        <span class="js-label">j'aime</span>
+
+                                    </a>
+
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+            </div>
+            </div>
+        </section>
+
+    {% endblock %}

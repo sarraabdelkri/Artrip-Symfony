@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation evenement{% endblock %}
+
+{% block body %}
+
+
+    <a href="{{ path('reservationeven_index') }}"class=" btn btn-primary">Go Back</a>
+
+    <h1>Reservation evenement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id Evenement</th>
+                <td>{{ reservationeven.idEvenement }}</td>
+            </tr>
+            <tr>
+                <th>Nom participation</th>
+                <td>{{ reservationeven.nompartici }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ reservationeven.type }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ reservationeven.lieu }}</td>
+            </tr>
+            <tr>
+                <th>Id participon</th>
+                <td>{{ reservationeven.idparticipon }}</td>
+            </tr>
+
+            <tr>
+                <th>Evenement</th>
+                <td>{{ reservationeven.evenement }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ reservationeven.date ? reservationeven.date|date('Y-m-d') : '' }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('reservationeven_edit', {'id': reservationeven.id}) }}"class=" btn btn-primary">edit</a>
+
+    {{ include('reservationeven/_delete_form.html.twig') }}
+{% endblock %}

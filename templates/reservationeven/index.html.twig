@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  Reservation Evenement {% endblock %}
+
+{% block body %}
+<div>
+    {% for message in app.flashes('info') %}
+    <div class="alert alert-success">
+        {{ message }}
+        {% endfor %}
+    </div>
+
+    <h1 align="center">Reserver  un Evenement</h1>
+
+
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id Evenement </th>
+                <th>Nom participon</th>
+                <th>Type</th>
+                <th>Lieu</th>
+                <th>Idparticipon</th>
+                <th>Nom Evenement</th>
+                <th>evenement</th>
+                <th>Date</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservationeven in reservationevens %}
+            <tr>
+                <td>{{  reservationeven.id }}</td>
+                <td>{{ reservationeven.nompartici }}</td>
+                <td>{{ reservationeven.type }}</td>
+
+                <td>{{ reservationeven.type }}</td>
+                <td>{{ reservationeven.lieu }}</td>
+                <td>{{ reservationeven.idparticipon }}</td>
+
+                <td>{{ reservationeven.evenement }}</td>
+
+                <td>{{ reservationeven.date ? reservationeven.date|date('Y-m-d') : '' }}</td>
+
+
+
+
+                <td>
+                    <a href="{{ path('reservationeven_show', {'id': reservationeven.id}) }}" class=" btn btn-primary" >show</a>
+                    <a href="{{ path('reservationeven_edit', {'id': reservationeven.id}) }}"class=" btn btn-primary" >edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('reservationeven_new') }}"class=" btn btn-primary">Create new</a>
+
+    <a href="{{ path('pdf') }}"class=" btn btn-primary">pdf</a>
+
+{% endblock %}
+

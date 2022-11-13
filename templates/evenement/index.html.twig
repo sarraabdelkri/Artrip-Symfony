@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement {% endblock %}
+
+
+{% block body %}
+<div>
+    {% for message in app.flashes('info') %}
+    <div class="alert alert-success">
+        {{ message }}
+        {% endfor %}
+    </div>
+    <div class="card-body">
+
+        <h4 class="card-title">Evenement</h4>
+        <h1 align="center">Evenement </h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID Evenement</th>
+                <th>Titre</th>
+                <th>Lieu</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Prix</th>
+                <th>Nombre Participant</th>
+                <th>Etat</th>
+
+
+                <th>actions</th>
+            </tr>
+            </thead>
+            <body>
+            {% for evenement in evenements %}
+                <tr>
+                    <td>{{ evenement.id }}</td>
+                    <td>{{ evenement.titre }}</td>
+                    <td>{{ evenement.lieu }}</td>
+                    <td>{{ evenement.description }}</td>
+
+                    <td><img src="{{ asset('uploads/even/' ~evenement.image) }}" alt="" width="200" height="200"></td>
+                    <td>{{ evenement.type }}</td>
+                    <td>{{ evenement.date ? evenement.date|date('Y-m-d') : '' }}</td>
+                    <td>{{ evenement.prix }}</td>
+                    <td>{{ evenement.nbrmaxpart }}</td>
+                    <td>{{ evenement.etat }}</td>
+
+                    <td>
+                        <a href="{{ path('evenement_show', {'id': evenement.id}) }} " class=" btn btn-primary" >show</a>
+
+                        <a href="{{ path('evenement_edit', {'id': evenement.id}) }} " class=" btn btn-primary" >edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">no records found</td>
+                </tr>
+            {% endfor %}
+            </body>
+        </table>
+
+
+        <a href="{{ path('evenementlistfront') }}"class=" badge badge-sm bg-gradient">even</a>
+
+
+        <div class="navigation">
+            {{ knp_pagination_render( evenements) }}
+        </div>
+    </div>
+
+
+    {% endblock %}

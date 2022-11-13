@@ -1,0 +1,26 @@
+<div class="container mt-4">
+
+
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+
+    {{ form_widget(form) }}
+    <button class=" btn btn-primary" >{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+    <div class="row">
+
+        <div class="col-md-4"> {{ form_row(form.titre) }}</div>
+        <div class="col-md-4" > {{ form_row(form.lieu) }}</div>
+        <div class="col-md-4" > {{ form_row(form.description) }}</div>
+
+        <div class="col-md-4" > {{ form_row(form.image) }}</div>
+        <div class="col-md-4"> {{ form_row(form.type) }}</div>
+        <div class="col-md-4"> {{ form_row(form.date,{'attr':{'class': 'input-group date', 'data-provide' : 'datepicker'} }) }}</div>
+
+        <div class="col-md-3" > {{ form_row(form.nbrmaxpart) }}</div>
+        <div class="col-md-4"> {{ form_row(form.prix) }}</div>
+
+        z
+    </div>
+
+</div>

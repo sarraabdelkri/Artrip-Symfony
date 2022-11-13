@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifie Evenement{% endblock %}
+
+{% block body %}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-custom gutter-b example example-compact">
+                <div class="card-header">
+                    <h3 class="card-title">Edit une evenement</h3>
+                </div>
+
+                <table class="table">
+
+
+                    <tr>
+
+                        <td>
+                            {{ form_label(form.titre,"titre") }}
+                        </td>
+                        <td>
+                            {{ form_widget(form.titre)}}
+                            {{ form_errors(form.titre) }}
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            {{ form_label(form.lieu,"lieu") }}
+                        </td>
+                        <td>
+                            {{ form_widget(form.lieu)  }}
+                            {{ form_errors(form.lieu) }}
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            {{ form_label(form.description,"description") }}
+                        </td>
+                        <td>
+                            {{ form_widget(form.description)}}
+                            {{ form_errors(form.description) }}
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            {{ form_label(form.image,"image") }}
+                        </td>
+                        <td>
+                            {{ form_widget(form.image)}}
+                            {{ form_errors(form.image) }}
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            {{ form_label(form.date,"date") }}
+                        </td>
+                        <td>
+                            {{ form_widget(form.date,{'attr':{'class': 'input-group date', 'data-provide' : 'datepicker'} })}}
+                            {{ form_errors(form.date) }}
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            {{ form_label(form.prix,"prix") }}
+                        </td>
+                        <td>
+                            {{ form_widget(form.prix )}}
+                            {{ form_errors(form.prix) }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            {{ form_label(form.date,"Nombre de Participons") }}
+                        </td>
+                        <td>
+                            {{ form_widget(form.nbrmaxpart)}}
+                            {{ form_errors(form.nbrmaxpart) }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            {{ form_end(form) }}
+                        </td>
+                    </tr>
+
+                </table>
+                <div class="form-group mb-4">
+                    <div class="checkbox checkbox-secondary">
+                        {{ form_widget(form) }}
+                        <button type="SubmitType" class="btn btn-primary ">Modifier</button>
+                    </div>
+                </div>
+
+                {% endblock %}

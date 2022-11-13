@@ -1,0 +1,18 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}New Reservation  {% endblock %}
+
+{% block body %}
+<div>
+    {% for message in app.flashes('info') %}
+    <div class="alert alert-success">
+        {{ message }}
+        {% endfor %}
+    </div>
+    <h1 align="center">Reservation Evenement </h1>
+
+
+    {{ include('reservationeven/_form.html.twig') }}
+<a href="{{ path('indexfront') }} "class=" btn btn-primary">GO Back</a>
+
+{% endblock%}

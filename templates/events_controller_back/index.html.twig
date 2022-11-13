@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="card-body">
+    <h4 class="card-title">Evenement </h4>
+
+    {% for message in app.flashes('info') %}
+        <div class="alert alert-success" >
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('info2') %}
+        <div class="alert alert-danger" >
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('info3') %}
+        <div class="alert alert-warning" >
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('info4') %}
+        <div class="alert alert-success" >
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="table-responsive">
+
+    <div align="center">
+
+        <a href="{{ path('addevenement') }}">add</a>
+
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID Evenement</th>
+            <th>Titre</th>
+            <th>Lieu</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Prix</th>
+            <th>Nombre Participant</th>
+            <th>Etat</th>
+
+
+            <th>actions</th>
+        </tr>
+        </thead>
+
+            {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.titre }}</td>
+                <td>{{ evenement.lieu }}</td>
+                <td>{{ evenement.description }}</td>
+
+                <td><img src="{{ asset('uploads/even/' ~evenement.image) }}" alt="" width="200" height="200"></td>
+                <td>{{ evenement.type }}</td>
+                <td>{{ evenement.date ? evenement.date|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.dateend ? evenement.dateend|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.prix }}</td>
+                <td>{{ evenement.nbrmaxpart }}</td>
+                <td>{{ evenement.etat }}</td>
+            <td>
+                <a href="{{ path('modifyevenement',{'id':evenement.id}) }}" class="badge badge-outline-warning" >Update</a>
+            </td>
+            <td>
+                <a href="{{ path('removeevenement',{'id':evenement.id }) }}" class="badge badge-outline-danger" >Remove</a>
+            </td>
+
+        </tr>
+
+
+        {% endfor %}
+
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(evenements) }}
+    </div>
+    <a href="{{ path('stats') }}">stats</a>
+    <a href="{{ path('calendar_new') }}">stats</a>
+
+
+
+{% endblock %}

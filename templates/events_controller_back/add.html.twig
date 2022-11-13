@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ form_start(formEvenement,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+
+<div class="card-body">
+    <h4  class="card-title">add Evenement </h4>
+    <div class="table-responsive">
+
+        <table class="table">
+
+
+            <tr>
+
+
+                <td>
+                    {{ form_label(formEvenement.titre,"Le Titre") }}
+                </td>
+                <td>
+                    {{ form_widget(formEvenement.titre)}}
+                    {{ form_errors(formEvenement.titre) }}
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    {{ form_label(formEvenement.lieu,"Lieu de l'evenement") }}
+                </td>
+                <td>
+                    {{ form_widget(formEvenement.lieu) }}
+                    {{ form_errors(formEvenement.lieu) }}
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    {{ form_label(formEvenement.description,"Description de l'evenement") }}
+                </td>
+                <td>
+                    {{ form_widget(formEvenement.description )}}
+                    {{ form_errors(formEvenement.description) }}
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    {{ form_label(formEvenement.image,"image") }}
+                </td>
+                <td>
+                    {{ form_widget(formEvenement.image)}}
+                    {{ form_errors(formEvenement.image) }}
+                </td>
+            </tr>
+             <tr>
+
+                <td>
+                    {{ form_label(formEvenement.type,"type") }}
+                </td>
+                <td>
+                    {{ form_widget(formEvenement.type)}}
+                    {{ form_errors(formEvenement.type) }}
+                </td>
+            </tr>
+             <tr>
+
+                <td>
+                    {{ form_label(formEvenement.date) }}
+                </td>
+                <td>
+                    {{ form_widget(formEvenement.date)}}
+                    {{ form_errors(formEvenement.date) }}
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    {{ form_label(formEvenement.dateend) }}
+                </td>
+                <td>
+                    {{ form_widget(formEvenement.dateend)}}
+                    {{ form_errors(formEvenement.dateend) }}
+                </td>
+            </tr>
+             <tr>
+
+                <td>
+                    {{ form_label(formEvenement.prix,"prix") }}
+                </td>
+                <td>
+                    {{ form_widget(formEvenement.prix)}}
+                    {{ form_errors(formEvenement.prix) }}
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    {{ form_label(formEvenement.nbrmaxpart,"nbrmaxpart") }}
+                </td>
+                <td>
+                    {{ form_widget(formEvenement.nbrmaxpart)}}
+                    {{ form_errors(formEvenement.nbrmaxpart) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    {{ form_end(formEvenement) }}
+                </td>
+            </tr>
+
+        </table>
+    <div class="form-group mb-4">
+        <div class="checkbox checkbox-secondary">
+            {{ form_widget(formEvenement) }}
+            <button type="SubmitType" class="btn btn-primary ">Add</button>
+        </div>
+
+
+    </div>
+        {% endblock %}

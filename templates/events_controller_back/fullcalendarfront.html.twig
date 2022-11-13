@@ -1,0 +1,46 @@
+{% extends 'basecalendar.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        #calendrier{
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <a class="create-new-button" href="/evenementlistfront">Evenement list</a></li>
+    <div >
+        <a href="{{ path('calendar_new') }}" class="mdi mdi-keyboard-backspace"  > create a new evenement</a>
+    </div>
+
+    <div id="calendrier">
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView: 'timeGridWeek',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek'
+                },
+                events: {{ data|raw }},
+                editable: false,
+                eventResizableFromStart: false
+            })
+
+            calendar.render()
+        }
+    </script>
+
+{% endblock %}
